@@ -18,8 +18,14 @@ func main() {
 		port = customPort
 	}
 
-	fmt.Println("Running!")
-	if err := http.ListenAndServe(":"+port, s); err != nil {
+	locationCertificate := os.Getenv("CERT_FILE_LOCATION")
+	locationKey := os.Getenv("KEY_FILE_LOCATION")
+
+	fmt.Printf("Running in port %s!\n", port)
+	fmt.Println(locationCertificate)
+	fmt.Println(locationKey)
+
+	if err := http.ListenAndServeTLS(":"+port, locationCertificate, locationKey, s); err != nil {
 		fmt.Println(err)
 	}
 }

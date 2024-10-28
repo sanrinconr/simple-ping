@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -12,8 +13,13 @@ func main() {
 		fmt.Print(".")
 	})
 
+	port := "8080"
+	if customPort := os.Getenv("PORT"); customPort != "" {
+		port = customPort
+	}
+
 	fmt.Println("Running!")
-	if err := http.ListenAndServe(":8080", s); err != nil {
+	if err := http.ListenAndServe(":"+port, s); err != nil {
 		fmt.Println(err)
 	}
 }

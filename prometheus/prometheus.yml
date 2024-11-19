@@ -7,4 +7,5 @@ scrape_configs:
     insecure_skip_verify: true
    static_configs:
     - targets:
-       - 127.0.0.1:1443
+       - simple-ping-container:1443
+

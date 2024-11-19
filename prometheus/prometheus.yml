@@ -8,4 +8,9 @@ scrape_configs:
    static_configs:
     - targets:
        - simple-ping-container:1443
+remote_write:
+  - url: https://prometheus-us-central1.grafana.net/api/prom/push
+    basic_auth:
+      username_file: ./username_grafana.key
+      password_file: ./password_grafana.key
 

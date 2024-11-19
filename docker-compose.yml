@@ -1,6 +1,7 @@
 services:
   go-app:
     container_name: simple-ping-container
+    image: simple-ping
     build: 
       context: ./
       dockerfile: Dockerfile
@@ -12,7 +13,7 @@ services:
       - CERT_FILE_LOCATION=/server.crt
       - KEY_FILE_LOCATION=/server.key
     ports:
-      - "127.0.0.1:443:1443"
+      - "127.0.0.1:1443:1443"
   prometheus:
     image: prom/prometheus
     volumes:
